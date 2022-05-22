@@ -13,12 +13,13 @@ using System.Threading.Tasks;
 
 namespace IKATest.Models
 {
-    public class ImageListRepository : IImageRepository<Task<ObservableCollection<UserImage>>>
+    public class ImageListRepository : IImageRepository<ObservableCollection<UserImage>>
     {
 
         public ImageListRepository()
         {
-            ImageList = LoadImages().Result;
+            ImageList = LoadImages();
+            //ImageList.Concat(LoadImages().Result);
         }
 
         private ObservableCollection<UserImage> imageList = new ObservableCollection<UserImage>();
@@ -28,7 +29,7 @@ namespace IKATest.Models
             get { return imageList; }
             set
             {
-                this.imageList = value;
+                imageList = value;
             }
         }
 
@@ -47,24 +48,29 @@ namespace IKATest.Models
             //}
         }
 
-        public async Task<ObservableCollection<UserImage>> LoadImages()
+        public ObservableCollection<UserImage> LoadImages()
         {
             if (File.Exists("Images.json"))
             {
-                using FileStream fileStream = File.OpenRead("Images.json");
-                var JsonSerializerOptions = new JsonSerializerOptions()
-                {
-                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic)
-                };
-                return await JsonSerializer.DeserializeAsync<ObservableCollection<UserImage>>(fileStream, JsonSerializerOptions);
+
+                //using FileStream fileStream = File.OpenRead("Images.json");
+                //var JsonSerializerOptions = new JsonSerializerOptions()
+                //{
+                //    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic)
+                //};
+                //return await JsonSerializer.DeserializeAsync<ObservableCollection<UserImage>>(fileStream, JsonSerializerOptions);
+
+                //using (FileStream fs = new FileStream("Images.json", FileMode.OpenOrCreate))
+                //{
+                //    string ImageJson = fs.Read()
+                //    ImageList = JsonSerializer.Deserialize<ObservableCollection<UserImage>>(fs);
+                //}
+
+                string ImageJson = File.ReadAllText("Images.json");
+                return JsonSerializer.Deserialize<ObservableCollection<UserImage>>(ImageJson);
 
             }
             else return new ObservableCollection<UserImage>();
-
-            //using (FileStream fs = new FileStream("Images.json", FileMode.OpenOrCreate))
-            //{
-            //    ImageList = await JsonSerializer.DeserializeAsync<ObservableCollection<UserImage>>(fs);
-            //}
         }
 
         public void AddImage(UserImage image)

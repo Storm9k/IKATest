@@ -21,7 +21,7 @@
         <Button Content="Добавить" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="93" Height="20" Click="Button_Click"/>
         <Button Content="Удалить" HorizontalAlignment="Left" Margin="103,0,0,0" VerticalAlignment="Center" Width="93" Height="20" Click="Button_Click_1"/>
         <Image Grid.RowSpan="2" Grid.Column="1" x:Name="ImageBox" Margin="5,5,5,5" DataContext="{Binding SelectedImage}" Source="{Binding FilePath, UpdateSourceTrigger=PropertyChanged}"/>
-        <DataGrid Grid.Row="1" Grid.RowSpan="2" x:Name="ImageList" AutoGenerateColumns="False" DataContext="{Binding Images}" SelectedItem="{Binding SelectedImage}">
+        <DataGrid Grid.Row="1" Grid.RowSpan="2" x:Name="ImageList" AutoGenerateColumns="False" ItemsSource="{Binding Images}" SelectedItem="{Binding SelectedImage}" CanUserAddRows="False" CanUserDeleteRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Имя изображения" Binding="{Binding ImageName}" Width="*" IsReadOnly="True"></DataGridTextColumn>
             </DataGrid.Columns>
@@ -62,7 +62,5 @@
             <TextBox Grid.Column="4" HorizontalAlignment="Center" Grid.Row="3" Text="{Binding AvgRGB}" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
         </Grid>
-        
-        
     </Grid>
 </Window>

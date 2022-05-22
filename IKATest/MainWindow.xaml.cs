@@ -21,7 +21,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace IKATest
 {
     /// <summary>
@@ -45,11 +44,9 @@ namespace IKATest
             openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
             {
-
                 UserImage userImage = new UserImage(openFileDialog.FileName) { ImageName = openFileDialog.SafeFileName };
                 ImageViewModel.ImageListRep.AddImage(userImage);
             }
-            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
