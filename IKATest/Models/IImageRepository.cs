@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-
-namespace IKATest.Models
+﻿namespace IKATest.Models
 {
     public interface IImageRepository<T>
     {

@@ -6,9 +6,23 @@
         xmlns:local="clr-namespace:IKATest"
         mc:Ignorable="d"
         Title="IKATest" Height="450" Width="800">
-    
 
-        <Grid>
+    <Window.Resources>
+        <Style x:Key="GridTextBox" TargetType="TextBox">
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Height" Value="25"></Setter>
+        </Style>
+        <Style x:Key="GridLabel" TargetType="Label">
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="BorderThickness" Value="1,1,0,0"></Setter>
+            <Setter Property="BorderBrush" Value="#FF646464"></Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
@@ -27,7 +41,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid Grid.Column="1" Grid.Row="2" DataContext="{Binding SelectedImage}">
+        <Grid Grid.Column="1" Grid.Row="2" x:Name="GridRGB" DataContext="{Binding SelectedImage}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -41,26 +55,25 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Content="R" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Label Content="G" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <Label Content="B" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <Label Content="RGB" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <Label Content="Min" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Label Content="Max" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Label Content="Avg" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" Text="{Binding MinR}" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <TextBox Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" Text="{Binding MinG}" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <TextBox Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" Text="{Binding MinB}" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <TextBox Grid.Column="4" HorizontalAlignment="Center" Grid.Row="1" Text="{Binding MinRGB}" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" Text="{Binding MaxR}" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <TextBox Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" Text="{Binding MaxG}" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <TextBox Grid.Column="3" HorizontalAlignment="Center" Grid.Row="2" Text="{Binding MaxB}" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <TextBox Grid.Column="4" HorizontalAlignment="Center" Grid.Row="2" Text="{Binding MaxRGB}" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" Text="{Binding AvgR}" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <TextBox Grid.Column="2" HorizontalAlignment="Center" Grid.Row="3" Text="{Binding AvgG}" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <TextBox Grid.Column="3" HorizontalAlignment="Center" Grid.Row="3" Text="{Binding AvgB}" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <TextBox Grid.Column="4" HorizontalAlignment="Center" Grid.Row="3" Text="{Binding AvgRGB}" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-
+            <Label Content="R" Grid.Column="1" Style="{StaticResource GridLabel}"/>
+            <Label Content="G" Grid.Column="2" Style="{StaticResource GridLabel}"/>
+            <Label Content="B" Grid.Column="3" Style="{StaticResource GridLabel}"/>
+            <Label Content="RGB" Grid.Column="4" Style="{StaticResource GridLabel}"/>
+            <Label Content="Min" Style="{StaticResource GridLabel}" Grid.Row="1"/>
+            <Label Content="Max" Grid.Row="2" Style="{StaticResource GridLabel}"/>
+            <Label Content="Avg" Grid.Row="3" Style="{StaticResource GridLabel}"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding MinR}" Style="{StaticResource GridTextBox}" />
+            <TextBox Grid.Column="2"  Grid.Row="1" Text="{Binding MinG}" Style="{StaticResource GridTextBox}"/>
+            <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding MinB}" Style="{StaticResource GridTextBox}"/>
+            <TextBox Grid.Column="4" Grid.Row="1" Text="{Binding MinRGB}" Style="{StaticResource GridTextBox}"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding MaxR}" Style="{StaticResource GridTextBox}"/>
+            <TextBox Grid.Column="2" Grid.Row="2" Text="{Binding MaxG}" Style="{StaticResource GridTextBox}"/>
+            <TextBox Grid.Column="3" Grid.Row="2" Text="{Binding MaxB}" Style="{StaticResource GridTextBox}"/>
+            <TextBox Grid.Column="4" Grid.Row="2" Text="{Binding MaxRGB}" Style="{StaticResource GridTextBox}"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding AvgR}" Style="{StaticResource GridTextBox}"/>
+            <TextBox Grid.Column="2" Grid.Row="3" Text="{Binding AvgG}" Style="{StaticResource GridTextBox}"/>
+            <TextBox Grid.Column="3" Grid.Row="3" Text="{Binding AvgB}" Style="{StaticResource GridTextBox}"/>
+            <TextBox Grid.Column="4" Grid.Row="3" Text="{Binding AvgRGB}" Style="{StaticResource GridTextBox}"/>
         </Grid>
     </Grid>
 </Window>

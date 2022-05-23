@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using Emgu.CV;
 using Emgu.CV.Structure;
 
@@ -23,20 +21,20 @@ namespace IKATest.Models
             CVimage.MinMax(out minValues, out maxValues, out minLocation, out maxLocation);
             RGB = CVimage.GetAverage();
 
-            MinR = minValues[0];
-            MinG = minValues[1];
-            MinB = minValues[2];
-            minRGB = minValues.Min();
+            MinR = Convert.ToByte(minValues[0]);
+            MinG = Convert.ToByte(minValues[1]);
+            MinB = Convert.ToByte(minValues[2]);
+            minRGB = Convert.ToByte(minValues.Min());
 
-            MaxR = maxValues[0];
-            MaxG = maxValues[1];
-            MaxB = maxValues[2];
-            MaxRGB = maxValues.Max();
+            MaxR = Convert.ToByte(maxValues[0]);
+            MaxG = Convert.ToByte(maxValues[1]);
+            MaxB = Convert.ToByte(maxValues[2]);
+            MaxRGB = Convert.ToByte(maxValues.Max());
 
-            AvgR = RGB.Red;
-            AvgG = RGB.Green;
-            AvgB = RGB.Blue;
-            AvgRGB = (RGB.Red + RGB.Green + RGB.Blue) / 3;
+            AvgR = Convert.ToByte(RGB.Red);
+            AvgG = Convert.ToByte(RGB.Green);
+            AvgB = Convert.ToByte(RGB.Blue);
+            AvgRGB = Convert.ToByte((RGB.Red + RGB.Green + RGB.Blue) / 3);
 
 
         }
@@ -46,7 +44,7 @@ namespace IKATest.Models
         private double[] minValues, maxValues;
         private Rgb RGB;
 
-        private double minR, minG, minB, minRGB, maxR, maxG, maxB, maxRGB, avgR, avgG, avgB, avgRGB;
+        private byte minR, minG, minB, minRGB, maxR, maxG, maxB, maxRGB, avgR, avgG, avgB, avgRGB;
 
         public string FilePath
         {
@@ -67,37 +65,7 @@ namespace IKATest.Models
             }
         }
 
-        //public double[] MinValues
-        //{
-        //    get { return minValues; }
-        //    set
-        //    {
-        //        minValues = value;
-        //        OnPropertyChanged("MinValues");
-        //    }
-        //}
-
-        //public double[] MaxValues
-        //{
-        //    get { return maxValues; }
-        //    set
-        //    {
-        //        maxValues = value;
-        //        OnPropertyChanged("MaxValues");
-        //    }
-        //}
-
-        //public Rgb AvgRGB
-        //{
-        //    get { return avgRGB; }
-        //    set
-        //    {
-        //        avgRGB = value;
-        //        OnPropertyChanged("MinValues");
-        //    }
-        //}
-
-        public double MinR
+        public byte MinR
         {
             get { return minR; }
             set
@@ -107,7 +75,7 @@ namespace IKATest.Models
             }
         }
 
-        public double MaxR
+        public byte MaxR
         {
             get { return maxR; }
             set
@@ -117,7 +85,7 @@ namespace IKATest.Models
             }
         }
 
-        public double AvgR
+        public byte AvgR
         {
             get { return avgR; }
             set
@@ -127,7 +95,7 @@ namespace IKATest.Models
             }
         }
 
-        public double MinG
+        public byte MinG
         {
             get { return minG; }
             set
@@ -137,7 +105,7 @@ namespace IKATest.Models
             }
         }
 
-        public double MaxG
+        public byte MaxG
         {
             get { return maxG; }
             set
@@ -147,7 +115,7 @@ namespace IKATest.Models
             }
         }
 
-        public double AvgG
+        public byte AvgG
         {
             get { return avgG; }
             set
@@ -157,7 +125,7 @@ namespace IKATest.Models
             }
         }
 
-        public double MinB
+        public byte MinB
         {
             get { return minB; }
             set
@@ -167,7 +135,7 @@ namespace IKATest.Models
             }
         }
 
-        public double MaxB
+        public byte MaxB
         {
             get { return maxB; }
             set
@@ -177,7 +145,7 @@ namespace IKATest.Models
             }
         }
 
-        public double AvgB
+        public byte AvgB
         {
             get { return avgB; }
             set
@@ -187,7 +155,7 @@ namespace IKATest.Models
             }
         }
 
-        public double MinRGB
+        public byte MinRGB
         {
             get { return minRGB; }
             set
@@ -197,7 +165,7 @@ namespace IKATest.Models
             }
         }
 
-        public double MaxRGB
+        public byte MaxRGB
         {
             get { return maxRGB; }
             set
@@ -207,7 +175,7 @@ namespace IKATest.Models
             }
         }
 
-        public double AvgRGB
+        public byte AvgRGB
         {
             get { return avgRGB; }
             set
