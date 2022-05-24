@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IKATest"
         mc:Ignorable="d"
-        Title="IKATest" Height="450" Width="800">
+        Title="IKATest" Height="450" Width="800" MinHeight="300" MinWidth="600">
 
     <Window.Resources>
         <Style x:Key="GridTextBox" TargetType="TextBox">
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
             <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="BorderThickness" Value="1,1,0,0"></Setter>
         </Style>
         <Style x:Key="GridLabel" TargetType="Label">
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>

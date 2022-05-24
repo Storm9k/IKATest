@@ -9,9 +9,13 @@ namespace IKATest.Models
 {
     public class UserImage : INotifyPropertyChanged
     {
-
+        #region Конструктор по умолчанию
+        //Конструктор по умолчанию для загрузки изображений из JSON файла
         public UserImage() { }
+        #endregion
 
+        #region Конструктор с перегрузкой
+        //Конструктор с перегрузкой при добавлении изображения через приложение с последующей выгрузкой нужных свойств из него
         public UserImage(string filePath){
             FilePath = filePath;
             Image<Rgb, byte> CVimage = new Image<Rgb, byte>($"{filePath}");
@@ -35,9 +39,8 @@ namespace IKATest.Models
             AvgG = Convert.ToByte(RGB.Green);
             AvgB = Convert.ToByte(RGB.Blue);
             AvgRGB = Convert.ToByte((RGB.Red + RGB.Green + RGB.Blue) / 3);
-
-
         }
+        #endregion
 
         private string filePath;
         private string imageName;
@@ -46,6 +49,8 @@ namespace IKATest.Models
 
         private byte minR, minG, minB, minRGB, maxR, maxG, maxB, maxRGB, avgR, avgG, avgB, avgRGB;
 
+        #region Свойства
+        //Публичные свойства изображения с привязкой к обработчику интерфейса INotifyPropertyChanged для отображения данных в окне формы
         public string FilePath
         {
             get { return filePath; }
@@ -184,6 +189,7 @@ namespace IKATest.Models
                 OnPropertyChanged("AvgRGB");
             }
         }
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

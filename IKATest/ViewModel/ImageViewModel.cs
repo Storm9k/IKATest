@@ -7,10 +7,13 @@ namespace IKATest.ViewModel
 {
     public class ImageViewModel : INotifyPropertyChanged
     {
+        #region Конструктор ViewModel
+        //Получение ссылки на объект репозитория в конструкторе по умолчанию
         public ImageViewModel()
         {
             Images = ImageListRep.ImageList;
         }
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,6 +21,8 @@ namespace IKATest.ViewModel
 
         public ObservableCollection<UserImage> Images { get; set; }
 
+        #region Выбранное изображение
+        //Переменная и свойство выбранного избражения в главном окне приложения 
         private UserImage selectedImage;
         public UserImage SelectedImage
         {
@@ -28,8 +33,7 @@ namespace IKATest.ViewModel
                 OnPropertyChanged("SelectedImage");
             }
         }
-
-        
+        #endregion
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
